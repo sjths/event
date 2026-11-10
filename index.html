@@ -784,6 +784,7 @@ function startAdmin(){
         h('div', {class:'brand'}, emblem(true), h('div', null, h('b', null, '행사 참가 접수'), h('span', null, SCHOOL + ' · 관리자'))),
         h('span', {class:'hello'}, '선생님, 오늘도 좋은 하루 보내세요 🌿'),
         h('span', {class:'sp'}),
+        h('button', {class:'btn text', onclick: openPassword}, '비밀번호 바꾸기'),
         h('button', {class:'btn text', onclick: function(){ try { sessionStorage.removeItem('adminpw'); } catch (e) {} pw = ''; gate(false); }}, '나가기'))),
       h('div', {class:'layout'},
         h('section', {class:'panel'},
@@ -811,6 +812,43 @@ function startAdmin(){
             h('button', {class:'btn text sm', onclick: refresh}, '새로 불러오기')),
           listEl)));
     edit(null);
+  }
+
+  /* 비밀번호 바꾸기 창 */
+  function openPassword(){
+    function box(label, ph){ return h('input', {type:'password', placeholder: ph, 'aria-label': label, autocomplete:'off'}); }
+    var oldIn = box('지금 비밀번호', '지금 쓰는 비밀번호');
+    var newIn = box('새 비밀번호', '4자 이상');
+    var againIn = box('새 비밀번호 확인', '한 번 더 적어 주세요');
+    var saveBtn = h('button', {class:'btn primary', type:'submit'}, '바꾸기');
+    function close(){ modal.remove(); document.removeEventListener('keydown', onKey); }
+    function onKey(e){ if (e.key === 'Escape') close(); }
+    var modal = h('div', {class:'modal', role:'dialog', 'aria-modal':'true', 'aria-label':'비밀번호 바꾸기', onclick: function(e){ if (e.target === modal) close(); }},
+      h('form', {class:'panel', novalidate: true, onsubmit: function(e){
+        e.preventDefault();
+        if (!oldIn.value) { nudge(oldIn); return toast('지금 쓰는 비밀번호를 적어 주세요.'); }
+        if (newIn.value.length < 4) { nudge(newIn); return toast('새 비밀번호는 4자 이상으로 정해 주세요.'); }
+        if (newIn.value !== againIn.value) { nudge(againIn); return toast('새 비밀번호 두 칸이 서로 달라요.'); }
+        if (newIn.value === oldIn.value) { nudge(newIn); return toast('지금 비밀번호와 다른 비밀번호를 적어 주세요.'); }
+        var next = newIn.value;
+        saveBtn.disabled = true;
+        call('api_changePassword', oldIn.value, next).then(function(){
+          pw = next;
+          try { sessionStorage.setItem('adminpw', next); } catch (err) {}
+          close();
+          toast('비밀번호를 바꿨어요. 함께 쓰는 선생님들께도 알려 주세요.');
+        }, function(err){ saveBtn.disabled = false; toast(err.message); nudge(oldIn); });
+      }},
+        h('div', {class:'panel-head'}, h('h2', null, '🔑 비밀번호 바꾸기'), h('p', null, '행사를 만들고 고칠 때 쓰는 관리자 비밀번호예요.')),
+        h('div', {class:'panel-body'},
+          h('div', {class:'field'}, h('div', {class:'flabel'}, '지금 비밀번호'), oldIn),
+          h('div', {class:'field'}, h('div', {class:'flabel'}, '새 비밀번호'), newIn, h('div', {style:'height:10px'}), againIn,
+            h('p', {class:'hint', style:'margin-top:10px'}, '바꾸면 예전 비밀번호로는 들어올 수 없어요. 현황 링크와 QR은 그대로예요.'))),
+        h('div', {class:'panel-foot'}, saveBtn, h('span', {class:'sp'}),
+          h('button', {class:'btn text', type:'button', onclick: close}, '닫기'))));
+    document.body.appendChild(modal);
+    document.addEventListener('keydown', onKey);
+    oldIn.focus();
   }
 
   /* QR·링크 창 */
