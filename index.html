@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="ivory">
+<head>
+<meta charset="utf-8">
+<title>행사 참가 접수</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&display=swap">
+<style>
+/* 상주공고 파스텔 디자인 — 아이보리 */
+:root,[data-theme="ivory"]{
+  --ink:#382d1e; --ink-2:#5a4c3a; --muted:#776b5a;
+  --bg:#f9f4e6; --paper:#fdfcf9; --paper-2:#f9f6ec; --blob-1:#f0e8d1; --blob-2:#f2eec9; --sun:#f9f6dc;
+  --primary:#975e30; --primary-soft:#f9f2eb; --accent:#f0e7a8; --tint-a:#f3ebd3; --tint-b:#fcdccf;
+  --shadow:#dfd4b4; --dash:#e3dece; --ring:rgba(151,94,48,.28);
+}
+:root{
+  --white:#ffffff;
+  --danger:#c23232; --danger-soft:#fde8e6; --warn:#e8a817; --warn-soft:#fff6d0;
+  --cat-2:#15803d;
+  --emblem-url:url(data:image/png;base64,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);
+  --font:"Pretendard Variable",Pretendard,"Malgun Gothic","맑은 고딕",system-ui,sans-serif;
+  --display:"Jua","Pretendard Variable",Pretendard,"Malgun Gothic","맑은 고딕",sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.55;word-break:keep-all;-webkit-font-smoothing:antialiased;
+  min-height:100vh;
+  background:
+    radial-gradient(58vw 46vw at 100% 0%, var(--blob-1) 0 55%, transparent 56%) fixed,
+    radial-gradient(42vw 36vw at 0% 100%, var(--blob-2) 0 55%, transparent 56%) fixed,
+    radial-gradient(24vw 20vw at 12% 18%, rgba(255,255,255,.75) 0 55%, transparent 56%) fixed,
+    var(--bg);
+}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
+[hidden]{display:none!important}
+a{color:var(--primary)}
+.sp{flex:1} .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.hint{font-size:13px;color:var(--muted);line-height:1.5;margin:0}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap;cursor:pointer;text-decoration:none;
+  border:2px solid var(--ink);border-radius:999px;background:var(--white);color:var(--ink);padding:8px 18px;
+  font-weight:800;font-size:14.5px;box-shadow:0 3px 0 var(--shadow);transition:transform .08s,box-shadow .08s,background .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 4px 0 var(--shadow)}
+.btn:active{transform:translateY(3px);box-shadow:0 0 0 var(--shadow)}
+.btn:disabled{opacity:.55;cursor:default;transform:none}
+.btn.primary{background:var(--primary);color:#fff}
+.btn.danger{background:var(--danger);color:#fff}
+.btn.text{border:0;box-shadow:none;background:transparent;color:var(--primary);padding:6px 11px}
+.btn.text:hover{background:var(--primary-soft);transform:none} .btn.text:active{transform:none}
+.btn.text.danger{color:var(--danger)} .btn.text.danger:hover{background:var(--danger-soft)}
+.btn.lg{padding:12px 28px;font-size:16px} .btn.block{width:100%}
+.btn.sm{padding:5px 13px;font-size:13.5px}
+
+input[type=text],input[type=password],input[type=search],input[type=date],textarea,select{
+  width:100%;padding:11px 14px;border:2px solid var(--ink);border-radius:14px;background:var(--white);transition:box-shadow .15s}
+input:focus,textarea:focus,select:focus{outline:0;box-shadow:0 0 0 4px var(--ring)}
+::placeholder{color:var(--muted)}
+textarea{min-height:92px;resize:vertical;line-height:1.65}
+input[type=checkbox],input[type=radio]{accent-color:var(--primary);width:18px;height:18px;margin:0;flex:none}
+.check{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:800;cursor:pointer;padding:6px 0}
+.need{border-color:var(--danger)!important;box-shadow:0 0 0 4px rgba(194,50,50,.22)!important;animation:sp-nudge .35s ease 2}
+.needbox{outline:3px solid var(--danger);outline-offset:6px;border-radius:10px;animation:sp-nudge .35s ease 2}
+@keyframes sp-nudge{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+.emblem{display:block;width:92px;height:92px;margin:0 auto;padding:12px;border-radius:50%;
+  background:var(--white);border:2.5px solid var(--ink);box-shadow:0 4px 0 var(--shadow)}
+.emblem i{display:block;width:100%;height:100%;background:var(--ink);
+  -webkit-mask:var(--emblem-url) center/contain no-repeat;mask:var(--emblem-url) center/contain no-repeat}
+.emblem.sm{width:44px;height:44px;padding:5px;margin:0;border-width:2px;box-shadow:0 2px 0 var(--shadow);flex:none}
+
+.gate{min-height:100vh;display:grid;place-items:center;padding:24px 16px}
+.gate-card{width:100%;max-width:400px;background:var(--paper);border:2.5px solid var(--ink);border-radius:28px;
+  box-shadow:0 8px 0 var(--shadow);padding:34px 30px 28px;text-align:center}
+.gate-card h1{font-family:var(--display);font-weight:400;font-size:30px;margin:2px 0 4px;overflow-wrap:anywhere}
+.gate-card .school{margin:14px 0 0;font-size:15px;font-weight:800;color:var(--primary);letter-spacing:.06em}
+.gate-card .sub{margin:0 0 22px;color:var(--ink-2);font-size:15px}
+.gate-card input{text-align:center;font-size:18px;margin-bottom:14px}
+
+.top{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:2.5px solid var(--ink)}
+.top-in{max-width:1180px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:10px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand b{display:block;font-family:var(--display);font-weight:400;font-size:21px;line-height:1.15;overflow-wrap:anywhere}
+.brand span{display:block;font-size:12.5px;color:var(--muted);font-weight:600}
+.hello{margin-left:10px;font-size:13.5px;font-weight:700;color:var(--ink-2);background:var(--sun);
+  border:2px solid var(--ink);border-radius:999px;padding:3px 12px;white-space:nowrap}
+
+.banner{border:2px solid var(--ink);border-radius:18px;padding:12px 18px;font-size:14px;line-height:1.65;
+  box-shadow:0 4px 0 var(--shadow);background:var(--paper)}
+.banner.bad{background:var(--danger-soft)} .banner.warn{background:var(--warn-soft)}
+
+.container{max-width:1180px;margin:0 auto;padding:24px 20px}
+.layout{max-width:1180px;margin:0 auto;padding:24px 20px;display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:24px;align-items:start}
+@media(max-width:960px){.layout{grid-template-columns:1fr}}
+
+.panel{background:var(--paper);border:2.5px solid var(--ink);border-radius:26px;box-shadow:0 7px 0 var(--shadow)}
+.panel-head{padding:22px 26px 2px}
+.panel-head h2{margin:0;font-family:var(--display);font-weight:400;font-size:26px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.panel-head p{margin:4px 0 0;color:var(--ink-2);font-size:14px}
+.panel-body{padding:4px 26px 6px}
+.panel-foot{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 26px;border-top:2px solid var(--ink);
+  background:var(--paper-2);border-radius:0 0 23px 23px}
+.field{padding:18px 0;border-bottom:2px dashed var(--dash)} .field:last-child{border-bottom:0}
+.flabel{display:flex;align-items:baseline;gap:8px;font-size:14.5px;font-weight:800;margin:0 0 10px;flex-wrap:wrap}
+.flabel em{font-style:normal;font-weight:500;color:var(--muted);font-size:13px}
+.flabel em.req{color:var(--danger);font-weight:700}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;display:inline-flex;align-items:center;cursor:pointer;margin:0}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip span{display:inline-block;min-width:50px;text-align:center;border:2px solid var(--ink);background:var(--paper);border-radius:12px;
+  padding:4px 10px;font-size:14px;font-weight:700;box-shadow:0 2px 0 var(--shadow);
+  transition:transform .08s,box-shadow .08s,background .1s}
+.chip:hover span{background:var(--paper-2)}
+.chip input:checked + span{background:var(--primary);color:#fff;transform:translateY(2px);box-shadow:0 0 0 var(--shadow)}
+.chip input:focus-visible + span{outline:3px solid var(--primary);outline-offset:2px}
+.toggle{--c:var(--primary);display:inline-flex;align-items:center;gap:8px;border:2px solid var(--ink);background:var(--white);
+  border-radius:999px;padding:6px 15px 6px 11px;cursor:pointer;font-size:14px;font-weight:800;color:var(--ink);
+  box-shadow:0 3px 0 var(--shadow);transition:transform .08s,box-shadow .08s}
+.toggle i{width:12px;height:12px;border-radius:50%;background:var(--c);border:2px solid var(--ink);flex:none}
+.toggle:hover{transform:translateY(-1px);box-shadow:0 4px 0 var(--shadow)}
+.toggle[aria-pressed=true]{background:var(--c);color:#fff;transform:translateY(2px);box-shadow:0 1px 0 var(--shadow)}
+.toggle[aria-pressed=true] i{background:#fff}
+
+.tag{--c:var(--primary);font-size:12px;font-weight:800;color:#fff;background:var(--c);border:2px solid var(--ink);
+  padding:0 9px;border-radius:999px;white-space:nowrap;font-family:var(--font)}
+.tag.off{background:var(--white);color:var(--ink-2)}
+.badge{font-size:13px;font-weight:800;background:var(--accent);color:var(--ink);border:2px solid var(--ink);
+  border-radius:999px;padding:0 11px;line-height:1.6;font-variant-numeric:tabular-nums;white-space:nowrap;font-family:var(--font)}
+.section-pill{display:inline-block;margin:0;font-family:var(--display);font-weight:400;font-size:24px;
+  background:var(--ink);color:#fff;border-radius:999px;padding:4px 18px}
+
+.list{display:flex;flex-direction:column;gap:12px}
+.item{--c:var(--primary);border:2px solid var(--ink);border-radius:18px;padding:12px 14px 10px 20px;background:var(--white);
+  box-shadow:inset 7px 0 0 var(--c),0 4px 0 var(--shadow)}
+.item.closed{--c:var(--muted)}
+.item.editing{outline:3px solid var(--warn);outline-offset:2px}
+.item-title{font-weight:800;font-size:15.5px;line-height:1.4;margin-top:6px;overflow-wrap:anywhere}
+.item-meta{font-size:12.5px;color:var(--muted);font-weight:500;display:flex;gap:4px 10px;flex-wrap:wrap;margin-top:2px}
+.item-actions{display:flex;flex-wrap:wrap;gap:0 2px;margin:8px 0 0 -10px}
+
+.empty{padding:30px 12px;text-align:center;color:var(--ink-2);font-size:14.5px;font-weight:600}
+
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,10px);background:var(--ink);color:#fff;font-weight:700;
+  padding:12px 22px;border-radius:22px;font-size:14.5px;box-shadow:0 5px 0 var(--shadow);opacity:0;text-align:center;
+  transition:opacity .2s,transform .2s;pointer-events:none;width:max-content;max-width:calc(100vw - 32px);z-index:80}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* 항목 편집 줄 */
+.frow{border:2px solid var(--ink);border-radius:16px;background:var(--white);padding:10px 12px;box-shadow:0 3px 0 var(--shadow);
+  display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:8px}
+.frow input[type=text],.frow select{padding:8px 12px;border-radius:12px}
+.frow .opts{grid-column:1/-1}
+.frow .fctl{grid-column:1/-1;display:flex;align-items:center;gap:2px;flex-wrap:wrap}
+.frow .fctl .check{font-size:13.5px;padding:0;margin-right:auto}
+.flist{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+
+/* 창(QR·링크) */
+.modal{position:fixed;inset:0;z-index:60;background:rgba(56,45,30,.45);display:grid;place-items:center;padding:16px;overflow:auto}
+.modal .panel{width:100%;max-width:460px}
+.qrbox{width:232px;height:232px;margin:6px auto 4px;padding:14px;background:#fff;border:2.5px solid var(--ink);border-radius:20px;
+  box-shadow:0 4px 0 var(--shadow)}
+.qrbox img,.qrbox canvas{width:100%!important;height:100%!important;display:block}
+.linkrow{display:flex;gap:8px;align-items:center}
+.linkrow input{font-size:13px;padding:8px 12px;border-radius:12px;min-width:0}
+
+/* 현황 표 */
+.tablewrap{overflow-x:auto;border-radius:23px 23px 0 0}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{padding:10px 14px;text-align:left;white-space:nowrap;border-bottom:2px dashed var(--dash)}
+td.wrap{white-space:normal;min-width:180px;max-width:360px;overflow-wrap:anywhere}
+th{font-weight:800;background:var(--paper-2);border-bottom:2px solid var(--ink);position:sticky;top:0}
+td.num,th.num{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums;width:1%}
+td.time{color:var(--ink-2);font-variant-numeric:tabular-nums}
+tbody tr:hover td{background:var(--paper-2)}
+.count{font-family:var(--display);font-size:44px;line-height:1;color:var(--primary);font-variant-numeric:tabular-nums}
+.statbar{display:flex;align-items:center;gap:12px 16px;flex-wrap:wrap;margin-bottom:18px}
+.statbar .search{width:220px;max-width:100%}
+.filterbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.filterbar .flt-title{font-size:14px;margin-right:2px}
+.filterbar select{width:auto;max-width:100%;padding:6px 12px;border-radius:999px;font-size:14px;font-weight:700;box-shadow:0 3px 0 var(--shadow);cursor:pointer}
+.filterbar select.on{background:var(--primary);color:#fff}
+.filterbar select option{background:#fff;color:var(--ink)}
+.thbtn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-weight:800}
+.thbtn:focus-visible{outline:3px solid var(--primary);outline-offset:2px;border-radius:6px}
+.thbtn .arrow{font-size:11px;color:var(--muted)}
+th[aria-sort] .thbtn,th[aria-sort] .thbtn .arrow{color:var(--primary)}
+th.num .thbtn{color:var(--ink)}
+
+/* 참가자 입력 화면 */
+.formview{max-width:560px;margin:0 auto;padding:22px 16px 48px}
+.formhead{text-align:center;margin-bottom:18px}
+.formhead .school{margin:12px 0 0;font-size:14.5px;font-weight:800;color:var(--primary);letter-spacing:.06em}
+.formhead h1{font-family:var(--display);font-weight:400;font-size:30px;line-height:1.25;margin:2px 0 6px;overflow-wrap:anywhere}
+.formhead .meta{color:var(--ink-2);font-size:14.5px;font-weight:600}
+.formview input[type=text],.formview textarea{font-size:16px}
+.formview .chip span{padding:9px 16px;font-size:15.5px;min-width:64px}
+.formview .flabel{font-size:15.5px}
+.formview .notice{white-space:pre-wrap;margin-bottom:18px}
+.consent{align-items:flex-start;font-weight:700;line-height:1.5}
+.consent input{margin-top:2px}
+
+@media(max-width:760px){.hello{display:none}}
+@media(max-width:560px){
+  .top-in{padding:9px 16px} .brand span{display:none}
+  .container,.layout{padding-left:16px;padding-right:16px}
+  .panel-head{padding:20px 18px 2px} .panel-body{padding:4px 18px} .panel-foot{padding:14px 18px}
+  .two{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr}
+  .statbar .search{width:100%}
+  .count{font-size:38px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="config.js"></script>
+<script>
+(function(){
+'use strict';
+
+/* ───────── 공통 도구 ───────── */
+var app = document.getElementById('app');
+var SCHOOL = '상주공업고등학교';
+var DEFAULT_CONSENT = '입력한 정보는 이 행사의 참가 확인과 운영에만 사용합니다.';
+
+function h(tag, attrs){
+  var el = document.createElement(tag), k, v;
+  for (k in (attrs || {})) {
+    v = attrs[k];
+    if (v == null || v === false) continue;
+    if (k === 'class') el.className = v;
+    else if (k.slice(0,2) === 'on') el.addEventListener(k.slice(2), v);
+    else if (typeof v !== 'string' && k in el) el[k] = v;
+    else el.setAttribute(k, v === true ? '' : v);
+  }
+  for (var i = 2; i < arguments.length; i++) add(el, arguments[i]);
+  return el;
+}
+function add(el, c){
+  if (c == null || c === false) return;
+  if (Array.isArray(c)) { c.forEach(function(x){ add(el, x); }); return; }
+  el.appendChild(c.nodeType ? c : document.createTextNode(String(c)));
+}
+function show(){ app.textContent = ''; for (var i = 0; i < arguments.length; i++) add(app, arguments[i]); }
+
+/* 주소에서 어떤 화면인지 읽습니다: ?e=행사번호 → 입력, ?s=현황키 → 현황, 없으면 관리자 */
+var API_URL = (typeof window.API_URL === 'string' ? window.API_URL : '').trim();
+var BOOT = (function(){
+  var q = new URLSearchParams(location.search);
+  var b = {view:'admin', id:'', baseUrl: location.origin + location.pathname};
+  if (q.get('e')) { b.view = 'form'; b.id = q.get('e'); }
+  else if (q.get('s')) { b.view = 'status'; b.id = q.get('s'); }
+  return b;
+})();
+
+/* 구글 시트 쪽 서버에 일을 시킵니다 */
+function call(name){
+  var args = Array.prototype.slice.call(arguments, 1);
+  var offline = '연결이 잠깐 끊겼어요. 다시 시도해 주세요.';
+  // 구글 앱스 스크립트는 text/plain으로 보내야 다른 주소의 화면에서도 받을 수 있습니다
+  return fetch(API_URL, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify({fn: name, args: args}), redirect:'follow'})
+    .then(function(res){ if (!res.ok) throw new Error(offline); return res.json(); },
+          function(){ throw new Error(offline); })
+    .then(function(out){
+      if (!out || !out.ok) throw new Error((out && out.error) || offline);
+      return out.data;
+    }, function(err){ throw new Error(err && err.message && err.message !== 'Failed to fetch' ? err.message : offline); });
+}
+
+var toastTimer;
+function toast(msg){
+  var t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('on');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ t.classList.remove('on'); }, 3200);
+}
+function nudge(el, cls){
+  cls = cls || 'need';
+  el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls);
+  setTimeout(function(){ el.classList.remove(cls); }, 2500);
+  if (el.scrollIntoView) el.scrollIntoView({block:'center', behavior:'smooth'});
+  if (el.focus && /INPUT|TEXTAREA|SELECT/.test(el.tagName)) el.focus({preventScroll:true});
+}
+function emblem(small){ return h('span', {class: 'emblem' + (small ? ' sm' : ''), 'aria-hidden':'true'}, h('i')); }
+function prettyDate(d){
+  var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(d || '');
+  if (!m) return '';
+  var day = '일월화수목금토'[new Date(+m[1], +m[2]-1, +m[3]).getDay()];
+  return (+m[1]) + '년 ' + (+m[2]) + '월 ' + (+m[3]) + '일(' + day + ')';
+}
+function metaLine(ev){ return [prettyDate(ev.date), ev.dept].filter(Boolean).join(' · '); }
+function formUrl(ev){ return BOOT.baseUrl + '?e=' + encodeURIComponent(ev.id); }
+function statusUrl(ev){ return BOOT.baseUrl + '?s=' + encodeURIComponent(ev.key); }
+function messageCard(title, sub){
+  return h('div', {class:'gate'}, h('div', {class:'gate-card'},
+    emblem(), h('p', {class:'school'}, SCHOOL), h('h1', null, title), h('p', {class:'sub', style:'margin-bottom:0'}, sub)));
+}
+function loading(text){ show(h('div', {class:'gate'}, h('p', {class:'hint', style:'font-size:15px'}, text || '불러오는 중이에요…'))); }
+function copyText(text, input){
+  function ok(){ toast('링크를 복사했어요.'); }
+  function fallback(){
+    try { input.focus(); input.select(); document.execCommand('copy') ? ok() : toast('링크를 길게 눌러 복사해 주세요.'); }
+    catch (e) { toast('링크를 길게 눌러 복사해 주세요.'); }
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fallback);
+  else fallback();
+}
+function download(name, href){
+  var a = h('a', {href: href, download: name, target: '_blank'});
+  document.body.appendChild(a); a.click(); a.remove();
+}
+
+/* ───────── 참가자 입력 화면 ───────── */
+function startForm(){
+  function ready(ev){
+    if (!ev) return show(messageCard('행사를 찾지 못했어요', 'QR을 다시 찍어 주세요. 계속 안 되면 담당 선생님께 말씀해 주세요.'));
+    document.title = ev.name;
+    if (!ev.open) return show(messageCard('접수가 마감됐어요', '"' + ev.name + '" 접수는 끝났어요. 궁금한 점은 담당 선생님께 말씀해 주세요.'));
+    renderForm(ev);
+  }
+  if (BOOT.data !== undefined) return ready(BOOT.data);   // 화면과 함께 온 자료로 바로 그립니다
+  loading();
+  call('api_getForm', BOOT.id).then(ready, function(err){ show(messageCard('화면을 열지 못했어요', err.message)); });
+}
+
+function renderForm(ev){
+  var getters = [];   // {field, box, read()}
+  var consentBox = null;
+
+  function fieldBlock(f){
+    var box, read, control;
+    var name = 'f' + getters.length;
+    if (f.type === 'select' || f.type === 'multi') {
+      control = h('div', {class:'chips', role: f.type === 'select' ? 'radiogroup' : 'group', 'aria-label': f.label},
+        f.options.map(function(o){
+          return h('label', {class:'chip'}, h('input', {type: f.type === 'select' ? 'radio' : 'checkbox', name: name, value: o}), h('span', null, o));
+        }));
+      read = function(){
+        var picked = Array.prototype.slice.call(control.querySelectorAll('input:checked')).map(function(i){ return i.value; });
+        return f.type === 'select' ? (picked[0] || '') : picked;
+      };
+      box = control;
+    } else if (f.type === 'check') {
+      var cb = h('input', {type:'checkbox'});
+      control = h('label', {class:'check'}, cb, '예');
+      read = function(){ return cb.checked; };
+      box = control;
+    } else if (f.type === 'long') {
+      control = h('textarea', {'aria-label': f.label, maxlength: 2000});
+      read = function(){ return control.value.trim(); };
+      box = control;
+    } else {
+      var isTel = f.type === 'tel';
+      var mode = {number:'numeric', tel:'numeric', email:'email'}[f.type];
+      var auto = isTel ? 'tel' : f.type === 'email' ? 'email' : (f.label === '이름' ? 'name' : 'off');
+      control = h('input', {type:'text', inputmode: mode, autocomplete: auto, 'aria-label': f.label, maxlength: isTel ? 20 : 300,
+        placeholder: isTel ? '- 없이 숫자만 (예: 01012345678)' : null,
+        oninput: isTel ? function(){ var d = control.value.replace(/\D/g, '').slice(0, 15); if (d !== control.value) control.value = d; } : null});
+      read = function(){ return control.value.trim(); };
+      box = control;
+    }
+    getters.push({field: f, box: box, read: read});
+    return h('div', {class:'field'},
+      h('div', {class:'flabel'}, f.label, f.required ? h('em', {class:'req'}, '꼭 적어 주세요') : h('em', null, '선택')),
+      control);
+  }
+
+  var fieldsEl = ev.fields.map(fieldBlock);
+  if (ev.consent) {
+    consentBox = h('input', {type:'checkbox'});
+    fieldsEl.push(h('div', {class:'field'},
+      h('div', {class:'flabel'}, '개인정보 수집 동의', h('em', {class:'req'}, '꼭 확인해 주세요')),
+      h('p', {class:'hint', style:'margin-bottom:8px;font-size:14px;color:var(--ink-2)'}, ev.consentText || DEFAULT_CONSENT),
+      h('label', {class:'check consent'}, consentBox, '위 내용을 읽었고 동의합니다.')));
+  }
+
+  var submitBtn = h('button', {class:'btn primary lg block', type:'submit'}, '제출하기');
+
+  function isEmpty(v){ return v === '' || v === false || (Array.isArray(v) && !v.length); }
+  function onSubmit(e){
+    e.preventDefault();
+    var answers = {};
+    for (var i = 0; i < getters.length; i++) {
+      var g = getters[i], v = g.read();
+      if (g.field.required && isEmpty(v)) {
+        nudge(g.box, /INPUT|TEXTAREA/.test(g.box.tagName) ? 'need' : 'needbox');
+        return toast('"' + g.field.label + '" 항목을 입력해 주세요.');
+      }
+      if (g.field.type === 'email' && v && !/^\S+@\S+\.\S+$/.test(v)) {
+        nudge(g.box); return toast('이메일 주소를 다시 확인해 주세요.');
+      }
+      answers[g.field.label] = v;
+    }
+    if (consentBox && !consentBox.checked) {
+      nudge(consentBox.parentNode, 'needbox');
+      return toast('개인정보 수집에 동의해 주셔야 제출할 수 있어요.');
+    }
+    submitBtn.disabled = true; submitBtn.textContent = '보내는 중이에요…';
+    call('api_submit', ev.id, answers, !!(consentBox && consentBox.checked)).then(function(){
+      show(h('div', {class:'gate'}, h('div', {class:'gate-card'},
+        emblem(), h('p', {class:'school'}, SCHOOL), h('h1', null, '접수했어요'),
+        h('p', {class:'sub'}, '"' + ev.name + '"에 참가해 주셔서 고맙습니다.'),
+        h('button', {class:'btn', onclick: function(){ renderForm(ev); window.scrollTo(0,0); }}, '한 명 더 입력하기'))));
+      window.scrollTo(0,0);
+    }, function(err){
+      submitBtn.disabled = false; submitBtn.textContent = '제출하기';
+      toast(err.message);
+    });
+  }
+
+  show(h('main', {class:'formview'},
+    h('div', {class:'formhead'}, emblem(), h('p', {class:'school'}, SCHOOL), h('h1', null, ev.name),
+      metaLine(ev) ? h('div', {class:'meta'}, metaLine(ev)) : null),
+    ev.notice ? h('div', {class:'banner notice'}, ev.notice) : null,
+    h('form', {class:'panel', onsubmit: onSubmit, novalidate: true},
+      h('div', {class:'panel-body'}, fieldsEl),
+      h('div', {class:'panel-foot'}, submitBtn))));
+}
+
+/* ───────── 현황 화면 ───────── */
+function startStatus(){
+  var data = null, query = '', timer = null, busy = false, gone = false;
+  var countEl = h('span', {class:'count'}, '0');
+  var stateEl = h('span', {class:'tag'}, '접수 중');
+  var checkedEl = h('p', {class:'hint'}, '');
+  var tableEl = h('div', {class:'tablewrap'});
+  var search = h('input', {type:'search', class:'search', placeholder:'이름이나 내용으로 찾기', 'aria-label':'찾기',
+    oninput: function(){ query = search.value.trim().toLowerCase(); draw(); }});
+  var refreshBtn = h('button', {class:'btn', onclick: function(){ load(true); }}, '새로 불러오기');
+  var titleEl = h('b', null, '참가 현황'), subEl = h('span', null, SCHOOL);
+  var filters = {}, filterSig = '', sortLabel = null, sortDir = -1;   // sortLabel이 null이면 번호(접수) 순서
+  var filterBar = h('div', {class:'filterbar', hidden: true});
+  var totalEl = h('span', {class:'hint'});
+
+  function isLong(col){ return data.rows.some(function(r){ return (r[col] || '').length > 28; }); }
+  function cmp(a, b){ return a.localeCompare(b, 'ko', {numeric: true}); }
+  function filtering(){ return !!query || Object.keys(filters).length > 0; }
+
+  /* 지금 조건(필터·찾기·정렬)에 맞는 줄 */
+  function visibleRows(){
+    var rows = data.rows.map(function(r, i){ return {n: i + 1, r: r}; });
+    Object.keys(filters).forEach(function(label){
+      var c = data.header.indexOf(label);
+      if (c >= 0) rows = rows.filter(function(x){ return (x.r[c] || '') === filters[label]; });
+    });
+    if (query) rows = rows.filter(function(x){ return x.r.join(' ').toLowerCase().indexOf(query) >= 0; });
+    var c = data.header.indexOf(sortLabel);
+    rows.sort(function(a, b){
+      if (c < 0) return sortDir * (a.n - b.n);
+      var A = a.r[c] || '', B = b.r[c] || '';
+      if (!A !== !B) return A ? -1 : 1;                 // 빈칸은 늘 맨 아래
+      return sortDir * cmp(A, B) || (a.n - b.n);
+    });
+    return rows;
+  }
+
+  /* 골라 보기: 보기 중에 고르는 항목과, 같은 값이 여러 번 나오는 항목(반, 학년 등)에 생깁니다 */
+  function drawFilters(){
+    var cols = [];
+    data.header.forEach(function(label, c){
+      if (c === 0 || label === '개인정보 동의') return;
+      var seen = {}, filled = 0;
+      data.rows.forEach(function(r){ var v = r[c] || ''; if (v) { seen[v] = true; filled++; } });
+      var vals = Object.keys(seen).sort(cmp);
+      var preset = (data.choices || {})[label];
+      if (preset) {
+        var extra = vals.filter(function(v){ return preset.indexOf(v) < 0; });
+        cols.push({label: label, vals: preset.concat(extra)});
+      } else if (vals.length >= 2 && vals.length <= 15 && vals.length * 2 <= filled) {
+        cols.push({label: label, vals: vals});
+      }
+    });
+    Object.keys(filters).forEach(function(label){
+      var col = cols.filter(function(x){ return x.label === label; })[0];
+      if (!col || col.vals.indexOf(filters[label]) < 0) delete filters[label];
+    });
+    var sig = JSON.stringify([cols, filters]);
+    if (sig === filterSig) return;      // 바뀐 게 없으면 그대로 둡니다 (고르는 중에 닫히지 않게)
+    filterSig = sig;
+    filterBar.textContent = '';
+    filterBar.hidden = !cols.length;
+    if (!cols.length) return;
+    add(filterBar, h('b', {class:'flt-title'}, '골라 보기'));
+    cols.forEach(function(col){
+      var sel = h('select', {class: filters[col.label] ? 'on' : null, 'aria-label': col.label + ' 골라 보기', onchange: function(){
+        if (sel.value) filters[col.label] = sel.value; else delete filters[col.label];
+        draw();
+      }}, h('option', {value: ''}, col.label + ' 전체'),
+        col.vals.map(function(v){ return h('option', {value: v}, v); }));
+      sel.value = filters[col.label] || '';
+      add(filterBar, sel);
+    });
+    if (Object.keys(filters).length) add(filterBar, h('button', {class:'btn text sm', onclick: function(){ filters = {}; draw(); }}, '모두 풀기'));
+  }
+
+  function sortBy(label){
+    if (sortLabel === label) sortDir = -sortDir;
+    else { sortLabel = label; sortDir = label === null ? -1 : 1; }
+    draw();
+  }
+  function headCell(label, text, cls){
+    var on = sortLabel === label;
+    return h('th', {class: cls, scope:'col', 'aria-sort': on ? (sortDir > 0 ? 'ascending' : 'descending') : null},
+      h('button', {class:'thbtn', title: text + ' 순서로 정렬', onclick: function(){ sortBy(label); }},
+        text, h('span', {class:'arrow', 'aria-hidden':'true'}, on ? (sortDir > 0 ? '▲' : '▼') : '↕')));
+  }
+
+  function draw(){
+    drawFilters();
+    var rows = visibleRows();
+    countEl.textContent = rows.length;
+    totalEl.textContent = filtering() ? '전체 ' + data.rows.length + '명 중' : '';
+    stateEl.textContent = data.event.open ? '접수 중' : '마감';
+    stateEl.className = 'tag' + (data.event.open ? '' : ' off');
+    tableEl.textContent = '';
+    if (!data.rows.length) { add(tableEl, h('div', {class:'empty'}, '아직 접수한 사람이 없어요. 참가자가 QR로 입력하면 여기에 바로 보여요.')); return; }
+    if (!rows.length) { add(tableEl, h('div', {class:'empty'}, '조건에 맞는 사람이 없어요. 골라 보기나 찾는 말을 바꿔 보세요.')); return; }
+    var wraps = data.header.map(function(_, c){ return isLong(c); });
+    add(tableEl, h('table', null,
+      h('thead', null, h('tr', null, headCell(null, '번호', 'num'),
+        data.header.map(function(t){ return headCell(t, t, null); }))),
+      h('tbody', null, rows.map(function(x){
+        return h('tr', null, h('td', {class:'num'}, x.n),
+          data.header.map(function(_, c){
+            return h('td', {class: c === 0 ? 'time' : (wraps[c] ? 'wrap' : null)}, c === 0 ? (x.r[c] || '').slice(5, 16) : (x.r[c] || ''));
+          }));
+      }))));
+  }
+  function load(manual){
+    if (busy) return;
+    busy = true; refreshBtn.disabled = true;
+    call('api_getStatus', BOOT.id).then(function(res){ apply(res, manual); }, function(err){
+      busy = false; refreshBtn.disabled = false;
+      if (!data) show(messageCard('현황을 열지 못했어요', err.message));
+      else if (manual) toast(err.message);
+    });
+  }
+  function apply(res, manual){
+    {
+      busy = false; refreshBtn.disabled = false;
+      if (!res) { gone = true; clearInterval(timer); return show(messageCard('현황을 찾지 못했어요', '링크가 바뀌었거나 행사가 지워졌어요. 행사 담당 선생님께 새 링크를 받아 주세요.')); }
+      var first = !data;
+      data = res;
+      if (first) {
+        document.title = res.event.name + ' · 참가 현황';
+        titleEl.textContent = res.event.name;
+        subEl.textContent = [SCHOOL, res.event.dept, prettyDate(res.event.date)].filter(Boolean).join(' · ');
+        show(page);
+      }
+      checkedEl.textContent = '30초마다 새로 불러와요. 마지막으로 확인한 시각은 ' + res.checked.slice(11) + '이에요.';
+      draw();
+      if (manual) toast('새로 불러왔어요.');
+    }
+  }
+  function saveCsv(){
+    if (!data) return;
+    var shown = visibleRows();
+    if (!shown.length) return toast('저장할 사람이 없어요. 골라 보기나 찾는 말을 바꿔 보세요.');
+    if (filtering()) toast('지금 보이는 ' + shown.length + '명만 저장했어요.');
+    var lines = [data.header].concat(shown.map(function(x){ return x.r; })).map(function(r){
+      return r.map(function(v){ return '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"'; }).join(',');
+    });
+    var blob = new Blob(['﻿' + lines.join('\r\n')], {type:'text/csv;charset=utf-8'});
+    var url = URL.createObjectURL(blob);
+    download(data.event.name.replace(/[\\\/:*?"<>|]/g, ' ') + ' 참가현황.csv', url);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 5000);
+  }
+
+  var page = [
+    h('header', {class:'top'}, h('div', {class:'top-in'},
+      h('div', {class:'brand'}, emblem(true), h('div', null, titleEl, subEl)))),
+    h('main', {class:'container'},
+      h('div', {class:'statbar'},
+        h('span', {class:'section-pill'}, '📋 참가 현황'),
+        h('span', {class:'row', style:'gap:6px;align-items:baseline'}, countEl, h('b', null, '명'), totalEl), stateEl,
+        h('span', {class:'sp'}), search, refreshBtn,
+        h('button', {class:'btn primary', onclick: saveCsv}, '엑셀로 받기')),
+      filterBar,
+      h('div', {class:'panel'}, tableEl, h('div', {class:'panel-foot'}, checkedEl,
+        h('p', {class:'hint'}, '항목 이름을 누르면 그 순서로 정렬돼요. 한 번 더 누르면 거꾸로 돼요.'))))
+  ];
+  if (BOOT.data !== undefined) apply(BOOT.data, false);   // 화면과 함께 온 자료로 바로 그립니다
+  else { loading(); load(false); }
+  if (!gone) timer = setInterval(function(){ if (!document.hidden) load(false); }, 30000);
+}
+
+/* ───────── 관리자 화면 ───────── */
+var PRESETS = [
+  {label:'이름', type:'text', required:true},
+  {label:'학번', type:'number', required:true},
+  {label:'학년', type:'select', options:['1학년','2학년','3학년'], required:true},
+  {label:'반', type:'number', required:true},
+  {label:'번호', type:'number', required:true},
+  {label:'학과', type:'select', options:['스마트토목과','전기시스템과','건축목공시스템과','기계시스템과'], required:true},
+  {label:'소속', type:'text', required:false},
+  {label:'연락처', type:'tel', required:true},
+  {label:'이메일', type:'email', required:false},
+  {label:'학생 이름', type:'text', required:true},
+  {label:'학생과의 관계', type:'select', options:['아버지','어머니','조부모','기타'], required:true}
+];
+var TYPE_NAMES = [['text','짧은 글'],['long','긴 글'],['number','숫자'],['tel','전화번호'],['email','이메일'],
+  ['select','보기 중 하나 고르기'],['multi','보기 여러 개 고르기'],['check','예/아니오 체크']];
+
+function startAdmin(){
+  var pw = '';
+  try { pw = sessionStorage.getItem('adminpw') || ''; } catch (e) {}
+
+  function gate(first, note){
+    var input = h('input', {type:'password', placeholder: first ? '새 비밀번호 (4자 이상)' : '관리자 비밀번호', 'aria-label':'관리자 비밀번호', autocomplete:'off'});
+    var again = first ? h('input', {type:'password', placeholder:'한 번 더 적어 주세요', 'aria-label':'비밀번호 확인', autocomplete:'off'}) : null;
+    var btn = h('button', {class:'btn primary lg block', type:'submit'}, first ? '비밀번호 정하기' : '들어가기');
+    show(h('div', {class:'gate'}, h('form', {class:'gate-card', onsubmit: function(e){
+      e.preventDefault();
+      var v = input.value;
+      if (!v) { nudge(input); return; }
+      if (first && v.length < 4) { nudge(input); return toast('비밀번호는 4자 이상으로 정해 주세요.'); }
+      if (first && v !== again.value) { nudge(again); return toast('두 칸의 비밀번호가 서로 달라요.'); }
+      btn.disabled = true;
+      (first ? call('api_setPassword', v) : Promise.resolve()).then(function(){ return call('api_listEvents', v); }).then(function(list){
+        pw = v;
+        try { sessionStorage.setItem('adminpw', v); } catch (err) {}
+        console_(list);
+      }, function(err){ btn.disabled = false; toast(err.message); nudge(input); });
+    }},
+      emblem(), h('p', {class:'school'}, SCHOOL), h('h1', null, '행사 참가 접수'),
+      h('p', {class:'sub'}, first ? '처음이시네요! 관리자 비밀번호를 정해 주세요.' : '선생님, 반가워요! 👋'),
+      input, again, btn,
+      h('p', {class:'hint', style:'margin-top:14px'}, note || (first
+        ? '행사를 만들고 고칠 때 쓰는 비밀번호예요. 행사를 맡은 선생님들과만 나눠 주세요.'
+        : '행사를 만들고 고치는 화면이에요. 현황은 현황 링크로 바로 볼 수 있어요.')))));
+    input.focus();
+  }
+
+  function begin(st){
+    if (!st.hasPassword) return gate(true);
+    if (!pw) return gate(false);
+    loading();
+    call('api_listEvents', pw).then(console_, function(){ pw = ''; gate(false); });
+  }
+  if (BOOT.hasPassword !== undefined) begin({hasPassword: BOOT.hasPassword});
+  else {
+    loading();
+    call('api_adminState').then(begin, function(err){ show(messageCard('화면을 열지 못했어요', err.message)); });
+  }
+
+  /* 로그인 뒤 화면 */
+  function console_(events){
+    var draft, editingId = null;
+    var nameIn = h('input', {type:'text', placeholder:'예: 2학년 진로 박람회', maxlength:80, 'aria-label':'행사 이름'});
+    var dateIn = h('input', {type:'date', 'aria-label':'날짜'});
+    var deptIn = h('input', {type:'text', placeholder:'예: 진로상담부', maxlength:40, 'aria-label':'주최 부서'});
+    var noticeIn = h('textarea', {placeholder:'입력 화면 맨 위에 보여 줄 말을 적어 주세요. 비워 두어도 돼요.', maxlength:500, 'aria-label':'안내 문구'});
+    var consentIn = h('input', {type:'checkbox', onchange: function(){ consentTextIn.hidden = !consentIn.checked; }});
+    var consentTextIn = h('textarea', {maxlength:300, 'aria-label':'동의 문구', style:'min-height:70px;margin-top:8px'});
+    var presetBox = h('div', {class:'chips'});
+    var flist = h('div', {class:'flist'});
+    var headTitle = h('span', null);
+    var saveBtn = h('button', {class:'btn primary lg', onclick: save});
+    var cancelBtn = h('button', {class:'btn text', onclick: function(){ edit(null); }}, '그만두기');
+    var listEl = h('div', {class:'list'});
+    var countBadge = h('span', {class:'badge'}, '0');
+
+    function blank(){ return {id:null, name:'', date:'', dept:'', notice:'', consent:true, consentText:DEFAULT_CONSENT,
+      fields:[{label:'이름', type:'text', required:true}]}; }
+
+    function edit(ev){
+      editingId = ev ? ev.id : null;
+      draft = ev ? JSON.parse(JSON.stringify(ev)) : blank();
+      nameIn.value = draft.name; dateIn.value = draft.date; deptIn.value = draft.dept; noticeIn.value = draft.notice;
+      consentIn.checked = !!draft.consent; consentTextIn.value = draft.consentText || DEFAULT_CONSENT;
+      consentTextIn.hidden = !draft.consent;
+      headTitle.textContent = ev ? '✏️ 행사 고치기' : '✏️ 새 행사 만들기';
+      saveBtn.textContent = ev ? '고친 내용 저장하기' : '행사 만들기';
+      cancelBtn.hidden = !ev;
+      drawFields(); drawList();
+      if (ev) window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function drawPresets(){
+      presetBox.textContent = '';
+      PRESETS.forEach(function(p){
+        var idx = draft.fields.map(function(f){ return f.label; }).indexOf(p.label);
+        add(presetBox, h('button', {type:'button', class:'toggle', 'aria-pressed': idx >= 0 ? 'true' : 'false', onclick: function(){
+          if (idx >= 0) draft.fields.splice(idx, 1);
+          else draft.fields.push(JSON.parse(JSON.stringify(p)));
+          drawFields();
+        }}, h('i'), p.label));
+      });
+    }
+
+    function drawFields(){
+      drawPresets();
+      flist.textContent = '';
+      if (!draft.fields.length) add(flist, h('p', {class:'hint'}, '아직 고른 항목이 없어요. 위에서 고르거나 질문을 직접 만들어 보세요.'));
+      draft.fields.forEach(function(f, i){
+        var hasOpts = f.type === 'select' || f.type === 'multi';
+        var labelIn = h('input', {type:'text', value: f.label, placeholder:'항목 이름 (예: 점심 식사 여부)', maxlength:60, 'aria-label':'항목 이름',
+          oninput: function(){ f.label = labelIn.value; }, onchange: drawPresets});
+        var typeSel = h('select', {'aria-label':'입력 방식', onchange: function(){ f.type = typeSel.value; if (!f.options) f.options = []; drawFields(); }},
+          TYPE_NAMES.map(function(t){ return h('option', {value: t[0]}, t[1]); }));
+        typeSel.value = f.type;
+        var optsIn = hasOpts ? h('input', {type:'text', class:'opts', value: (f.options || []).join(', '), placeholder:'보기를 쉼표로 나눠 적어 주세요 (예: 참석, 불참)', 'aria-label':'보기',
+          oninput: function(){ f.options = optsIn.value.split(',').map(function(s){ return s.trim(); }).filter(Boolean); }}) : null;
+        function move(d){ var j = i + d; if (j < 0 || j >= draft.fields.length) return; draft.fields.splice(j, 0, draft.fields.splice(i, 1)[0]); drawFields(); }
+        add(flist, h('div', {class:'frow'}, labelIn, typeSel, optsIn,
+          h('div', {class:'fctl'},
+            h('label', {class:'check'}, h('input', {type:'checkbox', checked: !!f.required, onchange: function(e){ f.required = e.target.checked; }}), '꼭 적어야 해요'),
+            h('button', {type:'button', class:'btn text sm', disabled: i === 0, onclick: function(){ move(-1); }, 'aria-label': '위로 올리기'}, '▲ 위로'),
+            h('button', {type:'button', class:'btn text sm', disabled: i === draft.fields.length - 1, onclick: function(){ move(1); }, 'aria-label': '아래로 내리기'}, '▼ 아래로'),
+            h('button', {type:'button', class:'btn text danger sm', onclick: function(){ draft.fields.splice(i, 1); drawFields(); }}, '빼기'))));
+      });
+    }
+
+    function save(){
+      draft.name = nameIn.value.trim(); draft.date = dateIn.value; draft.dept = deptIn.value.trim(); draft.notice = noticeIn.value.trim();
+      draft.consent = consentIn.checked; draft.consentText = consentTextIn.value.trim() || DEFAULT_CONSENT;
+      if (!draft.name) { nudge(nameIn); return toast('행사 이름을 적어 주세요.'); }
+      if (!draft.fields.length) { nudge(presetBox, 'needbox'); return toast('받을 항목을 하나 이상 골라 주세요.'); }
+      var wasNew = !draft.id, label = saveBtn.textContent;
+      saveBtn.disabled = true; saveBtn.textContent = '저장하는 중이에요…';
+      call('api_saveEvent', pw, draft).then(function(saved){
+        saveBtn.disabled = false;
+        var i = events.map(function(e){ return e.id; }).indexOf(saved.id);
+        if (i >= 0) events[i] = saved; else events.unshift(saved);
+        edit(null);
+        toast(wasNew ? '행사를 만들었어요. QR을 뽑아 책상에 올려 주세요.' : '고쳤습니다.');
+        if (wasNew) openShare(saved);
+      }, function(err){ saveBtn.disabled = false; saveBtn.textContent = label; toast(err.message); });
+    }
+
+    function drawList(){
+      listEl.textContent = '';
+      countBadge.textContent = events.length;
+      if (!events.length) { add(listEl, h('div', {class:'empty'}, '아직 만든 행사가 없어요. 왼쪽에서 첫 행사를 만들어 보세요!')); return; }
+      events.forEach(function(ev){
+        var delBtn = h('button', {class:'btn text danger sm', onclick: function(){
+          if (delBtn.dataset.sure) {
+            delBtn.disabled = true;
+            call('api_deleteEvent', pw, ev.id).then(function(){
+              events.splice(events.indexOf(ev), 1);
+              if (editingId === ev.id) edit(null); else drawList();
+              toast('행사를 지웠어요. 받은 자료는 시트에 "보관"으로 남아 있어요.');
+            }, function(err){ delBtn.disabled = false; toast(err.message); });
+          } else {
+            delBtn.dataset.sure = '1'; delBtn.textContent = '정말 지울까요? 한 번 더 누르기';
+            setTimeout(function(){ delete delBtn.dataset.sure; delBtn.textContent = '지우기'; }, 4000);
+          }
+        }}, '지우기');
+        var toggleBtn = h('button', {class:'btn text sm', onclick: function(){
+          toggleBtn.disabled = true;
+          call('api_setOpen', pw, ev.id, !ev.open).then(function(saved){
+            events[events.indexOf(ev)] = saved; drawList();
+            toast(saved.open ? '접수를 다시 열었어요.' : '접수를 마감했어요.');
+          }, function(err){ toggleBtn.disabled = false; toast(err.message); });
+        }}, ev.open ? '마감하기' : '다시 열기');
+        add(listEl, h('div', {class:'item' + (ev.open ? '' : ' closed') + (editingId === ev.id ? ' editing' : '')},
+          h('div', {class:'row'}, h('span', {class:'tag' + (ev.open ? '' : ' off')}, ev.open ? '접수 중' : '마감'),
+            h('span', {class:'badge'}, ev.count + '명 접수')),
+          h('div', {class:'item-title'}, ev.name),
+          h('div', {class:'item-meta'}, h('span', null, metaLine(ev) || '날짜 없음'), h('span', null, '항목 ' + ev.fields.length + '개')),
+          h('div', {class:'item-actions'},
+            h('button', {class:'btn text sm', onclick: function(){ openShare(ev); }}, 'QR·링크'),
+            h('a', {class:'btn text sm', href: statusUrl(ev), target:'_blank', rel:'noopener'}, '현황 보기'),
+            h('button', {class:'btn text sm', onclick: function(){ edit(ev); }}, '고치기'),
+            toggleBtn, delBtn)));
+      });
+    }
+
+    function refresh(){
+      call('api_listEvents', pw).then(function(list){ events = list; drawList(); toast('새로 불러왔어요.'); }, function(err){ toast(err.message); });
+    }
+
+    show(
+      h('header', {class:'top'}, h('div', {class:'top-in'},
+        h('div', {class:'brand'}, emblem(true), h('div', null, h('b', null, '행사 참가 접수'), h('span', null, SCHOOL + ' · 관리자'))),
+        h('span', {class:'hello'}, '선생님, 오늘도 좋은 하루 보내세요 🌿'),
+        h('span', {class:'sp'}),
+        h('button', {class:'btn text', onclick: function(){ try { sessionStorage.removeItem('adminpw'); } catch (e) {} pw = ''; gate(false); }}, '나가기'))),
+      h('div', {class:'layout'},
+        h('section', {class:'panel'},
+          h('div', {class:'panel-head'}, h('h2', null, headTitle), h('p', null, '행사 정보를 적고, 참가자에게 받을 항목을 골라 주세요.')),
+          h('div', {class:'panel-body'},
+            h('div', {class:'field'}, h('div', {class:'flabel'}, '행사 이름', h('em', {class:'req'}, '꼭 적어 주세요')), nameIn),
+            h('div', {class:'field'}, h('div', {class:'two'},
+              h('div', null, h('div', {class:'flabel'}, '날짜'), dateIn),
+              h('div', null, h('div', {class:'flabel'}, '주최 부서'), deptIn))),
+            h('div', {class:'field'}, h('div', {class:'flabel'}, '안내 문구', h('em', null, '참가자에게 보여요')), noticeIn),
+            h('div', {class:'field'},
+              h('div', {class:'flabel'}, '받을 항목', h('em', null, '누르면 넣고, 다시 누르면 빠져요')),
+              presetBox, flist,
+              h('div', {style:'margin-top:14px'}, h('button', {type:'button', class:'btn', onclick: function(){
+                draft.fields.push({label:'', type:'text', required:false}); drawFields();
+                var ins = flist.querySelectorAll('.frow input[type=text]'); if (ins.length) ins[ins.length - 1].focus();
+              }}, '+ 질문 직접 만들기'))),
+            h('div', {class:'field'},
+              h('label', {class:'check'}, consentIn, '개인정보 수집 동의 받기'),
+              h('p', {class:'hint'}, '연락처처럼 개인정보를 받을 때는 켜 두세요. 참가자가 동의에 체크해야 제출할 수 있어요.'),
+              consentTextIn)),
+          h('div', {class:'panel-foot'}, saveBtn, cancelBtn)),
+        h('aside', null,
+          h('div', {class:'row', style:'margin-bottom:14px'}, h('span', {class:'section-pill'}, '📌 행사 목록'), countBadge, h('span', {class:'sp'}),
+            h('button', {class:'btn text sm', onclick: refresh}, '새로 불러오기')),
+          listEl)));
+    edit(null);
+  }
+
+  /* QR·링크 창 */
+  function openShare(ev){
+    var fUrl = formUrl(ev), sUrl = statusUrl(ev);
+    var qr = h('div', {class:'qrbox'});
+    var fIn = h('input', {type:'text', readonly:true, value: fUrl, 'aria-label':'입력 화면 링크', onfocus: function(){ fIn.select(); }});
+    var sIn = h('input', {type:'text', readonly:true, value: sUrl, 'aria-label':'현황 링크', onfocus: function(){ sIn.select(); }});
+    function close(){ modal.remove(); document.removeEventListener('keydown', onKey); }
+    function onKey(e){ if (e.key === 'Escape') close(); }
+    var modal = h('div', {class:'modal', role:'dialog', 'aria-modal':'true', 'aria-label':'QR과 링크', onclick: function(e){ if (e.target === modal) close(); }},
+      h('div', {class:'panel'},
+        h('div', {class:'panel-head'}, h('h2', null, '🔗 QR과 링크'), h('p', null, ev.name)),
+        h('div', {class:'panel-body'},
+          h('div', {class:'field'},
+            h('div', {class:'flabel'}, '참가자용 QR', h('em', null, '책상에 올려 두세요')),
+            qr,
+            h('div', {class:'row', style:'justify-content:center;margin-top:12px'},
+              h('button', {class:'btn primary', onclick: function(){ savePoster(ev, fUrl); }}, 'QR 안내문 저장하기')),
+            h('div', {class:'linkrow', style:'margin-top:12px'}, fIn, h('button', {class:'btn sm', onclick: function(){ copyText(fUrl, fIn); }}, '복사'))),
+          h('div', {class:'field'},
+            h('div', {class:'flabel'}, '교사용 현황 링크', h('em', null, '선생님들과 나눠 보세요')),
+            h('div', {class:'linkrow'}, sIn, h('button', {class:'btn sm', onclick: function(){ copyText(sUrl, sIn); }}, '복사')),
+            h('p', {class:'hint', style:'margin-top:8px'}, '이 링크를 아는 사람은 누구나 참가자 정보를 볼 수 있어요. 선생님들끼리만 나눠 주세요.'))),
+        h('div', {class:'panel-foot'},
+          h('a', {class:'btn', href: sUrl, target:'_blank', rel:'noopener'}, '현황 열기'), h('span', {class:'sp'}),
+          h('button', {class:'btn text', onclick: close}, '닫기'))));
+    document.body.appendChild(modal);
+    document.addEventListener('keydown', onKey);
+    makeQr(qr, fUrl, 408);
+  }
+}
+
+function makeQr(el, text, size){
+  if (typeof QRCode === 'undefined') { el.textContent = 'QR을 만들지 못했어요. 인터넷 연결을 확인하고 다시 열어 주세요.'; return null; }
+  new QRCode(el, {text: text, width: size, height: size, correctLevel: QRCode.CorrectLevel.M});
+  return el.querySelector('canvas');
+}
+
+/* 책상에 올려 둘 A4 안내문 (PNG) */
+function savePoster(ev, url){
+  var holder = h('div', {style:'position:absolute;left:-9999px;top:0'});
+  document.body.appendChild(holder);
+  var qrCanvas = makeQr(holder, url, 800);
+  if (!qrCanvas) { holder.remove(); return toast('QR을 만들지 못했어요. 인터넷 연결을 확인해 주세요.'); }
+  var fonts = (document.fonts && document.fonts.load) ? Promise.all([document.fonts.load('96px Jua'), document.fonts.load('800 40px "Pretendard Variable"')]).catch(function(){}) : Promise.resolve();
+  fonts.then(function(){
+    var W = 1240, H = 1754, c = h('canvas', {width: W, height: H}), x = c.getContext('2d');
+    var INK = '#382d1e', DISPLAY = 'Jua, "Pretendard Variable", "Malgun Gothic", sans-serif', BODY = '"Pretendard Variable", "Malgun Gothic", sans-serif';
+    function rr(px, py, w, hh, r){ x.beginPath(); x.moveTo(px + r, py); x.arcTo(px + w, py, px + w, py + hh, r); x.arcTo(px + w, py + hh, px, py + hh, r); x.arcTo(px, py + hh, px, py, r); x.arcTo(px, py, px + w, py, r); x.closePath(); }
+    function wrap(text, maxW, maxLines){
+      var lines = [], line = '';
+      text.split('').forEach(function(ch){
+        if (x.measureText(line + ch).width > maxW && line) { lines.push(line); line = ch.trim() ? ch : ''; } else line += ch;
+      });
+      if (line) lines.push(line);
+      if (lines.length > maxLines) { lines = lines.slice(0, maxLines); lines[maxLines - 1] = lines[maxLines - 1].slice(0, -1) + '…'; }
+      return lines;
+    }
+    x.fillStyle = '#f9f4e6'; x.fillRect(0, 0, W, H);
+    x.fillStyle = '#dfd4b4'; rr(70, 86, W - 140, H - 156, 64); x.fill();
+    x.fillStyle = '#fdfcf9'; rr(70, 70, W - 140, H - 156, 64); x.fill();
+    x.lineWidth = 7; x.strokeStyle = INK; x.stroke();
+    x.textAlign = 'center'; x.textBaseline = 'alphabetic';
+    x.fillStyle = '#975e30'; x.font = '800 44px ' + BODY; x.fillText(SCHOOL, W / 2, 210);
+    x.fillStyle = INK; x.font = '400 96px ' + DISPLAY;
+    var lines = wrap(ev.name, W - 300, 2), y = lines.length > 1 ? 330 : 370;
+    lines.forEach(function(l){ x.fillText(l, W / 2, y); y += 116; });
+    var meta = metaLine(ev);
+    if (meta) { x.fillStyle = '#5a4c3a'; x.font = '600 40px ' + BODY; x.fillText(meta, W / 2, 570); }
+    var Q = 760, qx = (W - Q) / 2, qy = 640;
+    x.fillStyle = '#dfd4b4'; rr(qx - 44, qy - 30, Q + 88, Q + 88, 48); x.fill();
+    x.fillStyle = '#fff'; rr(qx - 44, qy - 44, Q + 88, Q + 88, 48); x.fill(); x.stroke();
+    x.imageSmoothingEnabled = false; x.drawImage(qrCanvas, qx, qy, Q, Q);
+    x.fillStyle = INK; x.font = '400 64px ' + DISPLAY; x.fillText('휴대폰 카메라로 QR을 찍어 주세요', W / 2, 1560);
+    x.fillStyle = '#5a4c3a'; x.font = '600 36px ' + BODY; x.fillText('화면이 열리면 내용을 적고 제출하면 끝이에요', W / 2, 1622);
+    holder.remove();
+    download(ev.name.replace(/[\\\/:*?"<>|]/g, ' ') + ' QR 안내문.png', c.toDataURL('image/png'));
+    toast('QR 안내문을 저장했어요. A4로 인쇄해 책상에 올려 주세요.');
+  });
+}
+
+/* ───────── 시작 ───────── */
+if (!/^https:\/\/script\.google\.com\/.+\/exec$/.test(API_URL) && !window.__PREVIEW__)
+  show(messageCard('설정이 필요해요', 'config.js 파일에 구글 앱스 스크립트의 웹 앱 주소(…/exec)를 넣어 주세요. 설치 안내 3단계를 참고하세요.'));
+else if (BOOT.view === 'form') startForm();
+else if (BOOT.view === 'status') startStatus();
+else startAdmin();
+})();
+</script>
+</body>
+</html>
