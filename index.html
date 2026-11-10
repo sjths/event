@@ -856,7 +856,13 @@ function savePoster(ev, url){
   document.body.appendChild(holder);
   var qrCanvas = makeQr(holder, url, 800);
   if (!qrCanvas) { holder.remove(); return toast('QR을 만들지 못했어요. 인터넷 연결을 확인해 주세요.'); }
-  var fonts = (document.fonts && document.fonts.load) ? Promise.all([document.fonts.load('96px Jua'), document.fonts.load('800 40px "Pretendard Variable"')]).catch(function(){}) : Promise.resolve();
+  // 웹 글꼴은 글자 묶음별로 나뉘어 있어서, 안내문에 쓸 글자를 알려 줘야 그 글자들이 모두 내려받아집니다.
+  var GUIDE1 = '휴대폰 카메라로 QR을 찍어 주세요', GUIDE2 = '화면이 열리면 내용을 적고 제출하면 끝이에요';
+  var jua = ev.name + GUIDE1, body = SCHOOL + metaLine(ev) + GUIDE2;
+  var fonts = (document.fonts && document.fonts.load) ? Promise.all([
+    document.fonts.load('400 96px Jua', jua),
+    document.fonts.load('800 44px "Pretendard Variable"', body), document.fonts.load('600 40px "Pretendard Variable"', body)
+  ]).catch(function(){}) : Promise.resolve();
   fonts.then(function(){
     var W = 1240, H = 1754, c = h('canvas', {width: W, height: H}), x = c.getContext('2d');
     var INK = '#382d1e', DISPLAY = 'Jua, "Pretendard Variable", "Malgun Gothic", sans-serif', BODY = '"Pretendard Variable", "Malgun Gothic", sans-serif';
@@ -885,8 +891,8 @@ function savePoster(ev, url){
     x.fillStyle = '#dfd4b4'; rr(qx - 44, qy - 30, Q + 88, Q + 88, 48); x.fill();
     x.fillStyle = '#fff'; rr(qx - 44, qy - 44, Q + 88, Q + 88, 48); x.fill(); x.stroke();
     x.imageSmoothingEnabled = false; x.drawImage(qrCanvas, qx, qy, Q, Q);
-    x.fillStyle = INK; x.font = '400 64px ' + DISPLAY; x.fillText('휴대폰 카메라로 QR을 찍어 주세요', W / 2, 1560);
-    x.fillStyle = '#5a4c3a'; x.font = '600 36px ' + BODY; x.fillText('화면이 열리면 내용을 적고 제출하면 끝이에요', W / 2, 1622);
+    x.fillStyle = INK; x.font = '400 64px ' + DISPLAY; x.fillText(GUIDE1, W / 2, 1560);
+    x.fillStyle = '#5a4c3a'; x.font = '600 36px ' + BODY; x.fillText(GUIDE2, W / 2, 1622);
     holder.remove();
     download(ev.name.replace(/[\\\/:*?"<>|]/g, ' ') + ' QR 안내문.png', c.toDataURL('image/png'));
     toast('QR 안내문을 저장했어요. A4로 인쇄해 책상에 올려 주세요.');
